@@ -1,0 +1,8 @@
+#make passwd
+sudo docker run --rm -v $(pwd)/password:/mosquitto/config password_file eclipse-mosquitto mosquitto_passwd -c /mosquitto/config/password/passwd user1
+
+#docker up
+sudo docker-compose up -d
+
+#testing
+mosquitto_pub -h localhost -t "test/topic" -m "Hello from MQTT" -u "user1" -P "your_password"
